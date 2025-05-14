@@ -44,7 +44,10 @@ class Game {
     for (let i = 1; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         for (let k = 1; k < 4; k++) {
-          if (this.currentState[j][k - 1] === 0) {
+          if (
+            this.currentState[j][k - 1] === 0 &&
+            this.currentState[j][k] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -64,7 +67,10 @@ class Game {
 
             this.currentState[j][k - 1] = this.currentState[j][k];
             this.currentState[j][k] = 0;
-          } else if (this.currentState[j][k - 1] === this.currentState[j][k]) {
+          } else if (
+            this.currentState[j][k - 1] === this.currentState[j][k] &&
+            this.currentState[j][k] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -94,6 +100,7 @@ class Game {
     }
 
     if (isChanged) {
+      isChanged = false;
       this.addRandomTile();
     }
   }
@@ -108,7 +115,10 @@ class Game {
     for (let i = 1; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         for (let k = 2; k >= 0; k--) {
-          if (this.currentState[j][k + 1] === 0) {
+          if (
+            this.currentState[j][k + 1] === 0 &&
+            this.currentState[j][k] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -128,7 +138,10 @@ class Game {
 
             this.currentState[j][k + 1] = this.currentState[j][k];
             this.currentState[j][k] = 0;
-          } else if (this.currentState[j][k + 1] === this.currentState[j][k]) {
+          } else if (
+            this.currentState[j][k + 1] === this.currentState[j][k] &&
+            this.currentState[j][k] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -158,6 +171,7 @@ class Game {
     }
 
     if (isChanged) {
+      isChanged = false;
       this.addRandomTile();
     }
   }
@@ -172,7 +186,10 @@ class Game {
     for (let i = 1; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         for (let k = 1; k < 4; k++) {
-          if (this.currentState[k - 1][j] === 0) {
+          if (
+            this.currentState[k - 1][j] === 0 &&
+            this.currentState[k][j] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -192,7 +209,10 @@ class Game {
 
             this.currentState[k - 1][j] = this.currentState[k][j];
             this.currentState[k][j] = 0;
-          } else if (this.currentState[k - 1][j] === this.currentState[k][j]) {
+          } else if (
+            this.currentState[k - 1][j] === this.currentState[k][j] &&
+            this.currentState[k][j] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -222,6 +242,7 @@ class Game {
     }
 
     if (isChanged) {
+      isChanged = false;
       this.addRandomTile();
     }
   }
@@ -236,7 +257,10 @@ class Game {
     for (let i = 1; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         for (let k = 2; k >= 0; k--) {
-          if (this.currentState[k + 1][j] === 0) {
+          if (
+            this.currentState[k + 1][j] === 0 &&
+            this.currentState[k][j] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -256,7 +280,10 @@ class Game {
 
             this.currentState[k + 1][j] = this.currentState[k][j];
             this.currentState[k][j] = 0;
-          } else if (this.currentState[k + 1][j] === this.currentState[k][j]) {
+          } else if (
+            this.currentState[k + 1][j] === this.currentState[k][j] &&
+            this.currentState[k][j] !== 0
+          ) {
             isChanged = true;
 
             if (
@@ -286,6 +313,7 @@ class Game {
     }
 
     if (isChanged) {
+      isChanged = false;
       this.addRandomTile();
     }
   }
