@@ -97,3 +97,52 @@ document.addEventListener('keydown', (e) => {
     loseMessage.classList.remove('hidden');
   }
 });
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', (e) => {
+  if (game.getStatus() === 'idle') {
+    return;
+  }
+
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchend', (e) => {
+  if (game.getStatus() === 'idle') {
+    return;
+  }
+
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+
+  const dx = touchEndX - touchStartX;
+  const dy = touchEndY - touchStartY;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    if (dx >= 50) {
+      game.moveRight();
+    } else if (dx <= -50) {
+      game.moveLeft();
+    }
+  } else {
+    if (dy <= -50) {
+      game.moveUp();
+    } else if (dy >= 50) {
+      game.moveDown();
+    }
+  }
+
+  printBoard();
+  score.innerHTML = game.getScore();
+
+  if (game.getStatus() === 'win') {
+    hint.classList.add('hidden');
+    winMessage.classList.remove('hidden');
+  } else if (game.getStatus() === 'lose') {
+    hint.classList.add('hidden');
+    loseMessage.classList.remove('hidden');
+  }
+});
