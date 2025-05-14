@@ -110,6 +110,18 @@ document.addEventListener('touchstart', (e) => {
   touchStartY = e.touches[0].clientY;
 });
 
+document.addEventListener(
+  'touchmove',
+  function (e) {
+    // Перевіряємо, чи це свайп вниз
+    if (e.touches && e.touches.length === 1) {
+      // Можна додати додаткову перевірку напрямку свайпу, якщо потрібно
+      e.preventDefault();
+    }
+  },
+  { passive: false },
+);
+
 document.addEventListener('touchend', (e) => {
   if (game.getStatus() === 'idle') {
     return;
