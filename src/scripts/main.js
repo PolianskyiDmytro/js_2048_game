@@ -19,11 +19,11 @@ function printBoard() {
       const cellValue = game.currentState[i][j];
 
       if (game.currentState[i][j] !== 0) {
-        cell.innerHTML = cellValue;
+        cell.textContent = cellValue;
         cell.className = 'field-cell';
         cell.classList.add(`field-cell--${cellValue}`);
       } else {
-        cell.innerHTML = '';
+        cell.textContent = '';
         cell.className = 'field-cell';
       }
     }
@@ -34,7 +34,7 @@ startButton.addEventListener('click', () => {
   if (game.getStatus() === 'idle') {
     game.isIdle = false;
     game.start();
-    startButton.innerHTML = 'Restart';
+    startButton.textContent = 'Restart';
     startButton.classList.add('restart');
     startButton.classList.remove('start');
     startMessage.classList.add('hidden');
@@ -44,7 +44,7 @@ startButton.addEventListener('click', () => {
   } else {
     game.isIdle = true;
     game.restart();
-    startButton.innerHTML = 'Start';
+    startButton.textContent = 'Start';
     startButton.classList.remove('restart');
     startButton.classList.add('start');
     startMessage.classList.remove('hidden');
@@ -53,7 +53,7 @@ startButton.addEventListener('click', () => {
     loseMessage.classList.add('hidden');
   }
 
-  score.innerHTML = game.getScore();
+  score.textContent = game.getScore();
 
   printBoard();
 });
@@ -87,7 +87,7 @@ document.addEventListener('keydown', (e) => {
     printBoard();
   }
 
-  score.innerHTML = game.getScore();
+  score.textContent = game.getScore();
 
   if (game.getStatus() === 'win') {
     hint.classList.add('hidden');
@@ -148,7 +148,7 @@ document.addEventListener('touchend', (e) => {
   }
 
   printBoard();
-  score.innerHTML = game.getScore();
+  score.textContent = game.getScore();
 
   if (game.getStatus() === 'win') {
     hint.classList.add('hidden');
